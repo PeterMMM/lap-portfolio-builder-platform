@@ -4,7 +4,7 @@ import Main from "@/components/Main";
 import React from "react";
 
 export default function page() {
-  const isAunthenticated = true;
+  const isAunthenticated = false;
 
   let children = <Login />;
 
