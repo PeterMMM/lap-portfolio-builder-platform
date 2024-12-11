@@ -1,4 +1,6 @@
+import Dashboard from '@/components/Dashboard'
 import Login from '@/components/Login'
+import Main from '@/components/Main'
 import { Main } from 'next/document'
 import React from 'react'
 
@@ -7,6 +9,7 @@ export default function page() {
 
     let children = (
         <Login />
+        
     )
     
     if (isAunthenticated) {
@@ -20,5 +23,6 @@ export default function page() {
     <Main>
        {children} 
     </Main>
+    
   )
 }
