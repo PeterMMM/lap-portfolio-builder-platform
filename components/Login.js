@@ -1,12 +1,13 @@
 import React from "react";
 import Button from "./Button";
 
+
 export default function Login() {
   return (
     <div
       className="flex flex-col flex-1 justify-center items-center gap-4"
       style={{
-        backgroundImage: `url('/img/bg.jpg')`, 
+        backgroundImage: `url('/components/img/bg.jpg')`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
