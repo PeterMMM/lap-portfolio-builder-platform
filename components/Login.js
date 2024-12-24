@@ -23,11 +23,11 @@ export default function Login() {
       <div className="max-w-[400px] w-full mx-auto flex justify-center items-center px-3  sm:py-2 text-white">
         <Button text="Log In" full />
       </div>
-      <p className="text-center">
-        Don't have an account? <span className="text-indigo-600">Sign in</span>
+      <p className="text-center text-white">
+        Don't have an account? <span className="text-blue-500">Sign in</span>
       </p>
       <p className="text-center">
-        <span className="text-indigo-600">I forgot my password</span>
+        <span className="text-blue-500">I forgot my password</span>
       </p>
     </div>
   );

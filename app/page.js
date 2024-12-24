@@ -1,4 +1,4 @@
-import Aunthentication from "@/components/Aunthentication";
+import Aunthentication from "@/components/Home";
 import Main from "@/components/Main";
 
 export default function Home() {
