@@ -5,12 +5,9 @@ import Button from "./Button";
 export default function Login() {
   return (
     <div
-      className="flex flex-col flex-1 justify-center items-center gap-4"
+      className="flex flex-col flex-1 justify-center items-center gap-4 bg-cover bg-center min-h-screen"
       style={{
-        backgroundImage: `url('/components/img/bg.jpg')`, 
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
+        backgroundImage: "url('../images/bg.jpg')",
       }}
     >
       <h4 className={" text-4xl sm:text-5xl md:text-6xl "}>Log In</h4>
