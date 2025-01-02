@@ -1,9 +1,12 @@
 import React from "react";
 import Button from "./Button";
 import bgImage from "../images/bg.png";
+import Layout from "./Layout";
 
 export default function Login() {
   return (
+    <Layout>
+
     <div
       className="flex flex-col flex-1 justify-center items-center gap-4 bg-cover bg-center min-h-screen"
       style={{
@@ -30,5 +33,6 @@ export default function Login() {
         <span className="text-blue-500">I forgot my password</span>
       </p>
     </div>
+    </Layout>
   );
 }
