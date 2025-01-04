@@ -4,5 +4,10 @@ const testController = require("../controllers/testController")
 
 // Route 
 router.get('/', testController.greeting);
+router.get('/token', testController.generateToken);
+router.get('/validate/:token', testController.validateToken);
+
+//test route
+router.post('/test', testController.createTest);
 
 module.exports = router;

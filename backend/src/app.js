@@ -2,7 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const testRoutes = require('./routes/routes')
+const testRoutes = require('./routes/routes');
+const connectDB = require('./config/db');
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Database Connection
+connectDB();
 
 // Sample Route
 app.use('/', testRoutes)
