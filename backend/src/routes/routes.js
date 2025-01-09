@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const testController = require("../controllers/testController")
 
-// Route 
+// Routes
 router.get('/', testController.greeting);
 router.get('/token', testController.generateToken);
 router.get('/validate/:token', testController.validateToken);
