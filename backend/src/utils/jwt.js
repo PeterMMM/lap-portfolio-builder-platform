@@ -1,47 +1,35 @@
 const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'default_secret_key';
+const ACCESS_TOKEN_EXPIRY = process.env.JWT_ACCESS_EXPIRY || '15m'; 
+const REFRESH_TOKEN_EXPIRY = process.env.JWT_REFRESH_EXPIRY || '7d'; 
+
 const generateAccessToken = (payload) => {
-    const secret = process.env.JWT_SECRET;
-
-    const expiresIn = '1s';
-
-    return jwt.sign(payload, secret, {
+    return jwt.sign(payload, JWT_SECRET, {
         algorithm: 'HS256',
-        expiresIn,
+        expiresIn: ACCESS_TOKEN_EXPIRY,
     });
 };
 
-
 const generateRefreshToken = (payload) => {
-    const secret = process.env.JWT_SECRET;
-
-    const expiresIn = '7d';
-
-    return jwt.sign(payload, secret, {
+    return jwt.sign(payload, JWT_SECRET, {
         algorithm: 'HS256',
-        expiresIn,
+        expiresIn: REFRESH_TOKEN_EXPIRY,
     });
 };
 
 const validateToken = (token) => {
-
-    const secret = process.env.JWT_SECRET;
-
     try {
-
-        const decoded = jwt.verify(token, secret); 
+        const decoded = jwt.verify(token, JWT_SECRET);
         return { valid: true, expired: false, decoded };
-
     } catch (error) {
-
         const isExpired = error.name === 'TokenExpiredError';
         return { valid: false, expired: isExpired, error: error.message };
-
     }
 };
 
 module.exports = {
     generateAccessToken,
     generateRefreshToken,
-    validateToken
+    validateToken,
 };
