@@ -33,6 +33,7 @@ async function seedDatabase() {
     await User.create({
       usr_name: 'testuser',
       password: 'password123',
+      email: 'testuser@gmail.com',
       profile_pic: '',
       usr_role_id: userRole._id,
       contact_info_id: contactInfo._id,

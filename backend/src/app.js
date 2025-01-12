@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const testRoutes = require('./routes/routes');
+const v1Routes = require('./routes/routes');
 const connectDB = require('./config/db');
 
 dotenv.config();
@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Database Connection
 connectDB();
 
-// Sample Route
-app.use('/', testRoutes)
+// V1 Routes
+app.use('/v1', v1Routes)
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
