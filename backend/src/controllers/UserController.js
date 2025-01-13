@@ -39,3 +39,37 @@ exports.validateOtpCodeController = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+exports.registerUser = async (req, res) => {
+    try {
+        const { username, email, password, roleId, contactInfo, skills } = req.body;
+
+        // Validate input data
+        if (!username || !email || !password || !roleId || !contactInfo || !skills) {
+            return res.status(400).json({ success: false, message: "Missing required fields" });
+        }
+
+        // Log data to verify what is being sent
+        console.log("Received registration data:", req.body);
+
+        // Call service to register user
+        const result = await UserService.registerUser({
+            username,
+            email,
+            password,
+            roleId,
+            contactInfo,
+            skills
+        });
+
+        if (result.success) {
+            return res.status(201).json({ success: true, message: "User registered successfully", user: result.user });
+        } else {
+            console.error("Registration failed:", result.message); // Log any failures
+            return res.status(400).json({ success: false, message: result.message });
+        }
+    } catch (error) {
+        console.error("Error in registerUser:", error);
+        return res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};

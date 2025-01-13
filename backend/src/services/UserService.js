@@ -117,3 +117,34 @@ exports.validateOtpCodeService = async (email, otp) => {
     return { success: false, message: error.message };
   }
 };
+const bcrypt = require('bcrypt');
+
+exports.registerUser = async (data) => {
+    const { username, email, password, roleId, contactInfo, skills } = data;
+
+    try {
+        const existingUser = await UserDao.findUserByEmail(email);
+        if (existingUser) {
+            console.log("User with this email already exists:", email);
+            return { success: false, message: "User with this email already exists" };
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        console.log("Password hashed successfully");
+
+        const newUser = await UserDao.createUser({
+            username,
+            email,
+            password: hashedPassword,
+            roleId,
+            contactInfo,
+            skills
+        });
+
+        console.log("User created successfully:", newUser);
+        return { success: true, user: newUser };
+    } catch (error) {
+        console.error("Error in registerUser service:", error);
+        return { success: false, message: error.message || "Error creating user" };
+    }
+};

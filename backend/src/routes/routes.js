@@ -10,6 +10,7 @@ router.get('/', testController.greeting);
 //User
 router.post('/validateUser', userController.validateUser)
 router.post('/validateOtp', userController.validateOtpCodeController)
+router.post('/register', userController.registerUser);
 
 
 module.exports = router;

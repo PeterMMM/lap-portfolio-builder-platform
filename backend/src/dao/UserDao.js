@@ -45,3 +45,40 @@ exports.validateOtpCode = async (email, otp) => {
         return { success: false, message: error.message };
     }
 }
+
+const { ContactInfo, Skill } = require('../models/ContactInfoData');
+
+exports.findUserByEmail = async (email) => {
+    try {
+        return await User.findOne({ email });
+    } catch (error) {
+        throw new Error("Error finding user by email");
+    }
+};
+
+exports.createUser = async (data) => {
+    try {
+        const { username, email, password, roleId, contactInfo, skills } = data;
+
+        const contactInfoDoc = new ContactInfo(contactInfo);
+        await contactInfoDoc.save();
+        console.log("Contact info saved:", contactInfoDoc);
+
+        const newUser = new User({
+            usr_name: username,
+            email: email,
+            password: password,
+            usr_role_id: roleId,
+            contact_info_id: contactInfoDoc._id,
+            skill_ids: skills,
+        });
+
+        await newUser.save();
+        console.log("New user created:", newUser);
+
+        return newUser;
+    } catch (error) {
+        console.error("Error creating user in DAO:", error);
+        throw new Error(error.message || "Error creating user");
+    }
+};
