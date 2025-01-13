@@ -15,6 +15,26 @@ exports.validateUserInfo = async (username, email) => {
     }
 }
 
+exports.resetPassword = async(email, hashedPassword) => {
+    try{
+        const result = await User.findOneAndUpdate(
+            { email },
+            { password: hashedPassword },
+            { new: true }
+          );
+
+          console.log(result)
+          if (!result) {
+            return { success: false, message: "User not found or update failed" };
+          }
+      
+          return { success: true, message: "Password updated successfully" };
+        } catch (error) {
+          console.error("Error resetting password:", error);
+          return { success: false, message: error.message };
+        }
+}
+
 exports.insertOtpCode = async (user, otp) => {
     try {
         const otpEntry = new Otp({
@@ -46,7 +66,7 @@ exports.validateOtpCode = async (email, otp) => {
     }
 }
 
-const { ContactInfo, Skill } = require('../models/ContactInfoData');
+const { ContactInfo } = require('../models/ContactInfoData');
 
 exports.findUserByEmail = async (email) => {
     try {

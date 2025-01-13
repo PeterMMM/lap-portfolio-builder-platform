@@ -1,6 +1,8 @@
 const UserDao = require("../dao/UserDao");
 const ServerUtils = require("../utils/ServerUtils");
 
+require("dotenv").config();
+
 exports.validateUser = async (data) => {
   const username = data.username;
   const email = data.email;
@@ -20,6 +22,7 @@ exports.validateUser = async (data) => {
 exports.sendOtpCode = async (user) => {
   try {
     const otpCode = await ServerUtils.generateOTP();
+    console.log(user)
 
     otpHtmlTemplate = `
 <!DOCTYPE html>
@@ -92,8 +95,8 @@ exports.sendOtpCode = async (user) => {
 </html>
 `;
     await ServerUtils.sendMail(
-      "brangtsawmaung89@gmail.com",
-      "brangtsawmaung89@gmail.com",
+      user.email, // to
+      process.env.SERVICE_EMAIL, //from
       "OPT Code, LAP-Portfolio Builder",
       otpHtmlTemplate
     );
@@ -104,6 +107,20 @@ exports.sendOtpCode = async (user) => {
     throw new Error("Failed to send OTP");
   }
 };
+
+exports.resetPasswordService = async(email, password) => {
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const result = await UserDao.resetPassword(email, hashedPassword);
+    if (result.success) {
+      return { success: true, message: result.message };
+    } else {
+      return { success: false, message: result.message };
+    }
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+}
 
 exports.validateOtpCodeService = async (email, otp) => {
   try {
