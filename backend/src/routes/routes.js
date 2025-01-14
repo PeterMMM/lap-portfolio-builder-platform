@@ -11,6 +11,7 @@ router.get('/', testController.greeting);
 router.post('/validateUser', userController.validateUser)
 router.post('/validateOtp', userController.validateOtpCodeController)
 router.post('/resetPassword', userController.resetPassword)
+router.post('/login', userController.login);
 router.post('/register', userController.registerUser);
 
 

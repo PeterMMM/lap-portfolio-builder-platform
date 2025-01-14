@@ -67,6 +67,7 @@ exports.validateOtpCode = async (email, otp) => {
 }
 
 const { ContactInfo } = require('../models/ContactInfoData');
+const bcrypt = require('bcrypt');
 
 exports.findUserByEmail = async (email) => {
     try {
@@ -100,5 +101,25 @@ exports.createUser = async (data) => {
     } catch (error) {
         console.error("Error creating user in DAO:", error);
         throw new Error(error.message || "Error creating user");
+    }
+};
+
+
+exports.login = async (email, password) => {
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return { success: false, message: "User not found" };
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return { success: false, message: "Invalid password", user: user };
+        }
+
+        return { success: true, user };
+    } catch (error) {
+        console.error("Error during login:", error);
+        return { success: false, message: error.message };
     }
 };

@@ -2,6 +2,7 @@ const connectDB = require('../config/db');
 const { User, UserRole } = require('../models/UserData');
 const { ContactInfo } = require('../models/ContactInfoData');
 const { Skill } = require('../models/SkillData');
+const bcrypt = require('bcrypt');
 
 //Database Connection
 connectDB();
@@ -30,9 +31,10 @@ async function seedDatabase() {
     });
 
     // Insert Users
+    const hashedPassword = await bcrypt.hash("test123", 10);
     await User.create({
       usr_name: 'testuser',
-      password: 'password123',
+      password: hashedPassword,
       email: 'testuser@gmail.com',
       profile_pic: '',
       usr_role_id: userRole._id,

@@ -1,5 +1,6 @@
 const UserDao = require("../dao/UserDao");
 const ServerUtils = require("../utils/ServerUtils");
+const jwt = require("../utils/jwt")
 
 require("dotenv").config();
 
@@ -121,6 +122,34 @@ exports.resetPasswordService = async(email, password) => {
     return { success: false, message: error.message };
   }
 }
+
+exports.loginUser = async (data) => {
+  const { email, password } = data;
+  try {
+    const result = await UserDao.login(email, password);
+    if (result.success) {
+
+      const userInfo = {
+        email: result.user.email,
+        username: result.user.usr_name
+      }
+
+      const accessToken = jwt.generateAccessToken(userInfo);
+      const refreshToken = jwt.generateRefreshToken(userInfo);
+      let token = {
+        access_token: accessToken,
+        refresh_token: refreshToken
+      }
+
+      return { success: true, message: result.message, user: userInfo, token: token };
+    }else{
+      return { success: false, message: result.message};
+    }
+
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+};
 
 exports.validateOtpCodeService = async (email, otp) => {
   try {

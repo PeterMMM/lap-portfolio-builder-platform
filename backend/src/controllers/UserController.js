@@ -56,6 +56,23 @@ exports.resetPassword = async(req, res) => {
     }
 }
 
+exports.login = async(req, res) => {
+    try{
+        const password = req.body.password;
+        const email = req.body.email;
+        const result = await UserService.loginUser({password, email})
+        
+        if (result.success) {
+            res.status(200).json(result);
+        } else {
+            res.status(400).json(result);
+        }
+        
+    }catch(error){
+
+    }
+}
+
 exports.registerUser = async (req, res) => {
     try {
         const { username, email, password, roleId, contactInfo, skills } = req.body;
