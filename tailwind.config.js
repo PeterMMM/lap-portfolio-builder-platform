@@ -11,7 +11,13 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         customGreen: "#1E2620",
+        beige: '#f5f5dc',
+        'brown-700': '#654321',
+        'brown-800': '#4d2e1a',
 
+      },
+      height: {
+        '18': '4.5rem', 
       },
     },
   },
