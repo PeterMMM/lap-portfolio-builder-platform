@@ -12,7 +12,17 @@ export default function Footer() {
 
         {/* Column 1 */}
       <li>
-          <h1 className="font-bold text-lg mb-4">Porvocad</h1>
+      <div className="relative flex items-center justify-center">
+      {/* Logo Image Positioned Behind the Text */}
+      <img
+        src="/images/povocad.png" 
+        alt="Logo"
+        className="absolute w-32 h-32 opacity-30" // Adjust the size as needed
+      />
+      <h1 className="relative text-4xl font-bold text-white z-10">
+        Porvocad
+      </h1>
+    </div>
  
         </li>
 
