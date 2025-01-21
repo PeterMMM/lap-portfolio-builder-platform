@@ -5,9 +5,24 @@ const cors = require('cors');
 const v1Routes = require('./routes/routes');
 const connectDB = require('./config/db');
 
+const swaggerUi = require('swagger-ui-express');
+const fs = require("fs")
+const YAML = require('yaml')
+
+let swaggerDocument;
+try {
+    const file = fs.readFileSync('./swagger.yaml', 'utf8');
+    swaggerDocument = YAML.parse(file);
+} catch (error) {
+    console.error('Error loading Swagger YAML file:', error.message);
+    process.exit(1); // Exit process if Swagger YAML file fails to load
+}
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Middleware
 app.use(cors());
