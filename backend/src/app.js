@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const v1Routes = require('./routes/routes');
+const cmsRoutes = require('./routes/cms.routes');
 const connectDB = require('./config/db');
 
 const swaggerUi = require('swagger-ui-express');
@@ -34,6 +35,9 @@ connectDB();
 
 // V1 Routes
 app.use('/v1', v1Routes)
+
+// CMS Routes
+app.use('/cms', cmsRoutes)
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
