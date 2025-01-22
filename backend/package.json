@@ -21,6 +21,7 @@
     "mongoose": "^8.8.4",
     "nodemailer": "^6.9.16",
     "swagger-ui-express": "^5.0.1",
+    "yaml": "^2.7.0",
     "yml": "^1.0.0"
   },
   "devDependencies": {

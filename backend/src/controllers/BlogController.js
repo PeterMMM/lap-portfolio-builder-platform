@@ -1,4 +1,5 @@
 const blogService = require('../services/BlogService');
+const mongoose = require('mongoose');
 
 // Controller to handle blog creation
 exports.createBlog = async (req, res) => {
@@ -59,9 +60,15 @@ exports.unlikeBlog = async (req, res) => {
     }
 };
 
-// Controller to delete a blog
+const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
+
 exports.deleteBlog = async (req, res) => {
+    console.log('Delete blog route hit');
     const { id } = req.params;
+
+    if (!isValidObjectId(id)) {
+        return res.status(400).json({ message: 'Invalid blog ID' });
+    }
 
     try {
         await blogService.deleteBlog(id);
@@ -100,17 +107,31 @@ exports.updateComment = async (req, res) => {
     const { id } = req.params;
     const { content } = req.body;
 
+    if (!isValidObjectId(id)) {
+        return res.status(400).json({ message: 'Invalid comment ID' });
+    }
+
     try {
         const updatedComment = await blogService.updateComment(id, content);
-        return res.status(200).json({ message: 'Comment updated successfully', data: updatedComment });
+        return res.status(200).json({
+            message: 'Comment updated successfully',
+            data: updatedComment,
+        });
     } catch (error) {
-        return res.status(500).json({ message: `Error updating comment: ${error.message}` });
+        return res.status(500).json({
+            message: `Error updating comment: ${error.message}`,
+        });
     }
 };
 
 // Controller for deleting a comment
 exports.deleteComment = async (req, res) => {
+    console.log('Delete comment route hit');
     const { id } = req.params;
+
+    if (!isValidObjectId(id)) {
+        return res.status(400).json({ message: 'Invalid comment ID' });
+    }
 
     try {
         await blogService.deleteComment(id);

@@ -2,19 +2,20 @@ const express = require('express');
 const router = express.Router();
 const blogController = require('../controllers/BlogController');
 
-//create a new blog
+//Create a new blog
 router.post('/createBlog', blogController.createBlog);
-router.put('/blog/:id', blogController.updateBlog);
-router.delete('/blog/:id', blogController.deleteBlog);
+router.put('/blog/update/:id', blogController.updateBlog);
+router.delete('/blog/delete/:id', blogController.deleteBlog);
 
+//Get blog likes and comments count
 router.get('/blog/:id', blogController.getBlogWithDetails);
 
 // Comment routes
 router.post('/blog/comment', blogController.addComment);
-router.put('/blog/comment/:id', blogController.updateComment);
-router.delete('/blog/comment/:id', blogController.deleteComment);
+router.put('/blog/comment/update/:id', blogController.updateComment);
+router.delete('/blog/comment/delete/:id', blogController.deleteComment);
 
-//like a blog
+//Like a blog
 router.post('/blog/like', blogController.likeBlog);
 router.post('/blog/unlike', blogController.unlikeBlog);
 

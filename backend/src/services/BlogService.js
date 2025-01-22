@@ -58,10 +58,13 @@ exports.unlikeBlog = async (blogId, userId) => {
 
 // Delete a blog
 exports.deleteBlog = async (blogId) => {
+    console.log(`Deleting blog with ID: ${blogId}`);
     if (!blogId) throw new Error('Blog ID is required.');
 
     try {
-        return await blogDao.deleteBlog(blogId);
+        const result = await blogDao.deleteBlog(blogId);
+        console.log('Blog deleted successfully:', result);
+        return result;
     } catch (error) {
         throw new Error(`Error in Service layer: ${error.message}`);
     }
