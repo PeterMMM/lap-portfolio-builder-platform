@@ -6,13 +6,13 @@ export default function Cards() {
       {/* Card 1 */}
       <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg">
         <img
-          src="https://cdn.mos.cms.futurecdn.net/vZLMcEg5JqfGeXydVkkxhk-1200-80.jpg"
+          src="/images/one.jpg"
           alt="Website Designers"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-opacity-50 flex flex-col justify-end p-6">
-          <h2 className="text-2xl font-bold">Website Designers</h2>
-          <p className="mt-2 text-sm">
+          <h2 className="text-2xl font-bold text-white">Website Designers</h2>
+          <p className="mt-2 text-sm text-white">
             Create your desired website with talented people
           </p>
         </div>
@@ -21,13 +21,13 @@ export default function Cards() {
       {/* Card 2 */}
       <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg">
         <img
-          src="https://www.uplers.com/wp-content/uploads/2022/06/Python-Developer-Resume-Tips.jpg"
+          src="/images/Two.jpg"
           alt="Freelance Developers"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0  bg-opacity-50 flex flex-col justify-end p-6">
-          <h2 className="text-2xl font-bold">Freelance Developers</h2>
-          <p className="mt-2 text-sm">
+        <div className="absolute inset-0 bg-opacity-50 flex flex-col justify-end p-6">
+          <h2 className="text-2xl font-bold text-white">Freelance Developers</h2>
+          <p className="mt-2 text-sm text-white">
             Make software with young and independent people
           </p>
         </div>
@@ -36,13 +36,13 @@ export default function Cards() {
       {/* Card 3 */}
       <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg">
         <img
-          src="https://experis.be/wp-content/uploads/2023/05/Online-web-developer-profile-1200x675.jpg"
+          src="/images/Three.jpg"
           alt="Photography"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-opacity-50 flex flex-col justify-end p-6">
-          <h2 className="text-2xl font-bold">Photography</h2>
-          <p className="mt-2 text-sm">Find your perfect scenarios</p>
+          <h2 className="text-2xl font-bold text-white">Photography</h2>
+          <p className="mt-2 text-sm text-white">Find your perfect scenarios</p>
         </div>
       </div>
     </div>

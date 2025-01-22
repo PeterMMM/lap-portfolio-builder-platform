@@ -14,10 +14,10 @@ module.exports = {
         beige: '#f5f5dc',
         'brown-700': '#654321',
         'brown-800': '#4d2e1a',
-
+        'light-green': '#DDF1DC', // Add the new color here
       },
       height: {
-        '18': '4.5rem', 
+        '18': '4.5rem',
       },
     },
   },
