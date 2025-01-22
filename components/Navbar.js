@@ -5,18 +5,13 @@ export default function Navbar() {
     <nav className="w-full">
       <div className="container mx-auto flex justify-between items-center p-1">
         {/* Logo */}
-        <div className="text-xl font-bold text-green-800 p-2 rounded">
-          <a href="#" className="hover:text-green-600 ">
-            Porvocad
-          </a>
+        <div className="flex items-center text-xl font-bold text-green-800 p-2 rounded">
+          <img
+            src=".../images/white.png"
+            alt="Logo"
+            className="w-10 h-10 mr-2 object-cover shadow-lg rounded-full"
+          />
         </div>
-
-        {/* Image between Logo and Primary Links */}
-        <img
-          src="https://static.vecteezy.com/system/resources/thumbnails/002/497/229/small_2x/avocado-fruit-logo-healthy-food-symbols-free-vector.jpg"
-          alt="Icon"
-          className="w-8 h-8 mx-4 object-cover"
-        />
 
         {/* Primary Links beside the Logo */}
         <ul className="flex flex-row gap-4 ml-4">
