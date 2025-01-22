@@ -2,19 +2,19 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <nav className="w-full">
+<nav className="w-full">
       <div className="container mx-auto flex justify-between items-center p-1">
         {/* Logo */}
-        <div className="flex items-center text-xl font-bold text-green-800 p-2 rounded">
+        <div className="flex items-center">
           <img
-            src=".../images/white.png"
+            src="/images/white.png"
             alt="Logo"
-            className="w-10 h-10 mr-2 object-cover shadow-lg rounded-full"
+            className="w-32 h-16" // Adjust size as necessary
           />
         </div>
 
         {/* Primary Links beside the Logo */}
-        <ul className="flex flex-row gap-4 ml-4">
+        <ul className="flex flex-row gap-4 ml-4 items-center">
           <li>
             <a
               href="#"
@@ -42,7 +42,7 @@ export default function Navbar() {
         </ul>
 
         {/* Secondary Links on the Right */}
-        <ul className="flex flex-row gap-4 ml-auto">
+        <ul className="flex flex-row gap-4 ml-auto items-center">
           <li>
             <a
               href="#"
