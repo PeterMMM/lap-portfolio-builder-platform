@@ -55,3 +55,70 @@ exports.unlikeBlog = async (blogId, userId) => {
 
     return await blogDao.removeLike(blogId, userId);
 };
+
+// Delete a blog
+exports.deleteBlog = async (blogId) => {
+    if (!blogId) throw new Error('Blog ID is required.');
+
+    try {
+        return await blogDao.deleteBlog(blogId);
+    } catch (error) {
+        throw new Error(`Error in Service layer: ${error.message}`);
+    }
+};
+
+// Fetch a blog with like/comment counts
+exports.getBlogWithDetails = async (blogId) => {
+    if (!blogId) throw new Error('Blog ID is required.');
+
+    try {
+        return await blogDao.getBlogWithDetails(blogId);
+    } catch (error) {
+        throw new Error(`Error in Service layer: ${error.message}`);
+    }
+};
+
+// Add a comment
+exports.addComment = async (blogId, userId, content) => {
+    if (!blogId || !userId || !content) {
+        throw new Error('All fields (blogId, userId, content) are required.');
+    }
+
+    const commentData = {
+        blog_id: blogId,
+        user_id: userId,
+        content,
+        created_at: new Date(),
+        updated_at: new Date(),
+    };
+
+    try {
+        return await blogDao.addComment(commentData);
+    } catch (error) {
+        throw new Error(`Error in Service layer: ${error.message}`);
+    }
+};
+
+// Update a comment
+exports.updateComment = async (commentId, content) => {
+    if (!commentId || !content) {
+        throw new Error('Comment ID and content are required.');
+    }
+
+    try {
+        return await blogDao.updateComment(commentId, content);
+    } catch (error) {
+        throw new Error(`Error in Service layer: ${error.message}`);
+    }
+};
+
+// Delete a comment
+exports.deleteComment = async (commentId) => {
+    if (!commentId) throw new Error('Comment ID is required.');
+
+    try {
+        return await blogDao.deleteComment(commentId);
+    } catch (error) {
+        throw new Error(`Error in Service layer: ${error.message}`);
+    }
+};

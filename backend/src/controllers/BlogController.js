@@ -58,3 +58,64 @@ exports.unlikeBlog = async (req, res) => {
         return res.status(500).json({ message: `Error unliking blog: ${error.message}` });
     }
 };
+
+// Controller to delete a blog
+exports.deleteBlog = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await blogService.deleteBlog(id);
+        return res.status(200).json({ message: 'Blog deleted successfully' });
+    } catch (error) {
+        return res.status(500).json({ message: `Error deleting blog: ${error.message}` });
+    }
+};
+
+// Controller to fetch a blog with like/comment counts
+exports.getBlogWithDetails = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const blog = await blogService.getBlogWithDetails(id);
+        return res.status(200).json({ message: 'Blog fetched successfully', data: blog });
+    } catch (error) {
+        return res.status(500).json({ message: `Error fetching blog: ${error.message}` });
+    }
+};
+
+// Controller for creating a comment
+exports.addComment = async (req, res) => {
+    const { blog_id, user_id, content } = req.body;
+
+    try {
+        const comment = await blogService.addComment(blog_id, user_id, content);
+        return res.status(201).json({ message: 'Comment added successfully', data: comment });
+    } catch (error) {
+        return res.status(500).json({ message: `Error adding comment: ${error.message}` });
+    }
+};
+
+// Controller for updating a comment
+exports.updateComment = async (req, res) => {
+    const { id } = req.params;
+    const { content } = req.body;
+
+    try {
+        const updatedComment = await blogService.updateComment(id, content);
+        return res.status(200).json({ message: 'Comment updated successfully', data: updatedComment });
+    } catch (error) {
+        return res.status(500).json({ message: `Error updating comment: ${error.message}` });
+    }
+};
+
+// Controller for deleting a comment
+exports.deleteComment = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await blogService.deleteComment(id);
+        return res.status(200).json({ message: 'Comment deleted successfully' });
+    } catch (error) {
+        return res.status(500).json({ message: `Error deleting comment: ${error.message}` });
+    }
+};
