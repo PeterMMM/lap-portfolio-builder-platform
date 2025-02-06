@@ -15,7 +15,7 @@ export default function Footer() {
   <img
     src="/images/green.png"
     alt="Logo"
-    className="w-80 h-32 mt-[-50px] -ml-24" // Adjust the negative margin to move it up
+    className="w-80 h-32 mt-[-50px] -ml-29" // Adjust the negative margin to move it up
   />
 </li>
 
