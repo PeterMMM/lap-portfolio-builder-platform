@@ -106,3 +106,30 @@ exports.registerUser = async (req, res) => {
         return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };
+
+exports.updateUserProfile = async (req, res) => {
+    try {
+        const { username, email, profile_pic, contactInfo, skills, password } = req.body;
+        const userId = req.params.id;
+
+        if (!userId) {
+            return res.status(400).json({ success: false, message: "User ID is required" });
+        }
+
+        const updateData = { username, email, profile_pic, contactInfo, skills };
+        if (password) {
+            updateData.password = password;
+        }
+
+        const result = await UserService.updateUserProfile(userId, updateData);
+
+        if (result.success) {
+            return res.status(200).json({ success: true, message: "User profile updated successfully", user: result.user });
+        } else {
+            return res.status(400).json({ success: false, message: result.message });
+        }
+    } catch (error) {
+        console.error("Error updating user profile:", error);
+        return res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};

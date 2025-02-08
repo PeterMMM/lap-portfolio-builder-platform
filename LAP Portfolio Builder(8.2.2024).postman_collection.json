@@ -158,6 +158,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update User Account Infos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2UxQGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTczOTAzNzI2NCwiZXhwIjoxNzM5MDM4MTY0fQ.nIcDxkmhNiWTPMVHE0y5SeOKie73kErAfeU1NqwadUU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"John Doe\",\n    \"email\": \"johndoe1@example.com\",\n    \"password\": \"password123\",\n    \"roleId\": \"678502597c7d460da433286a\",\n    \"contactInfo\": {\n        \"phone_number\": \"1234567890\",\n        \"email\": \"johndoe1@example.com\",\n        \"address\": \"123 Main Street\"\n    },\n    \"skills\": [\n        \"678502597c7d460da433286e\",\n        \"678502597c7d460da4332870\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/updateUser/67a7998b5ae48537f67becdf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"updateUser",
+								"67a7998b5ae48537f67becdf"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -513,6 +553,27 @@
 								}
 							}
 						},
+						"url": {
+							"raw": "http://localhost:3000/v1/projects/67a783763315699a855b2fcd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"projects",
+								"67a783763315699a855b2fcd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
 						"url": {
 							"raw": "http://localhost:3000/v1/projects/67a783763315699a855b2fcd",
 							"protocol": "http",

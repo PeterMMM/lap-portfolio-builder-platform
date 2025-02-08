@@ -1,5 +1,6 @@
 const {User} = require("../models/UserData")
 const {Otp} = require("../models/OtpData")
+const { Skill } = require('../models/SkillData');
 
 exports.validateUserInfo = async (username, email) => {
     try {
@@ -121,5 +122,51 @@ exports.login = async (email, password) => {
     } catch (error) {
         console.error("Error during login:", error);
         return { success: false, message: error.message };
+    }
+};
+
+exports.findUserById = async (userId) => {
+    try {
+        console.log("Finding user by ID:", userId); // Debugging line
+        return await User.findById(userId)
+            .populate("contact_info_id")
+            .populate("skill_ids"); // Ensure 'Skill' model is registered
+    } catch (error) {
+        console.error("Error finding user by ID:", error);
+        return null;
+    }
+};
+
+exports.updateUser = async (userId, updateData) => {
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return { success: false, message: "User not found" };
+        }
+
+        // Update ContactInfo if provided
+        if (updateData.contactInfo && user.contact_info_id) {
+            await ContactInfo.findByIdAndUpdate(user.contact_info_id, updateData.contactInfo, { new: true });
+        }
+
+        // Update password if provided
+        if (updateData.password) {
+            updateData.password = await bcrypt.hash(updateData.password, 10);
+        }
+
+        // Ensure skills array is valid
+        if (updateData.skills) {
+            updateData.skill_ids = updateData.skills;
+        }
+
+        // Update user fields
+        const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true })
+            .populate("contact_info_id")
+            .populate("skill_ids");
+
+        return { success: true, user: updatedUser };
+    } catch (error) {
+        console.error("Error updating user in DAO:", error);
+        return { success: false, message: error.message || "Error updating user" };
     }
 };

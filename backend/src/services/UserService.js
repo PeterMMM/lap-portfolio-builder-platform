@@ -194,3 +194,18 @@ exports.registerUser = async (data) => {
         return { success: false, message: error.message || "Error creating user" };
     }
 };
+
+exports.updateUserProfile = async (userId, updateData) => {
+  try {
+      const existingUser = await UserDao.findUserById(userId);
+      if (!existingUser) {
+          return { success: false, message: "User not found" };
+      }
+
+      const result = await UserDao.updateUser(userId, updateData);
+      return result;
+  } catch (error) {
+      console.error("Error updating user profile:", error);
+      return { success: false, message: error.message || "Error updating user profile" };
+  }
+};
