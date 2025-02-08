@@ -1,5 +1,6 @@
 const {User} = require("../models/UserData")
 const {Otp} = require("../models/OtpData")
+const { Skill } = require('../models/SkillData');
 
 exports.validateUserInfo = async (username, email) => {
     try {
@@ -121,13 +122,5 @@ exports.login = async (email, password) => {
     } catch (error) {
         console.error("Error during login:", error);
         return { success: false, message: error.message };
-    }
-};
-
-exports.deleteUserById = async (userId) => {
-    try {
-        return await User.findByIdAndDelete(userId);
-    } catch (error) {
-        throw new Error(`DAO error: ${error.message}`);
     }
 };
