@@ -15,8 +15,11 @@ router.post('/resetPassword', userController.resetPassword)
 router.post('/login', userController.login);
 router.post('/register', userController.registerUser);
 
-//Project
+// Project Routes
 router.post('/projects', projectController.createProject);
+router.get('/projects/:id', projectController.getProjectById);
+router.get('/projects', projectController.getAllProjects);
+router.put('/projects/:id', projectController.updateProject);
 router.delete('/projects/:id', projectController.deleteProject);
 
 
