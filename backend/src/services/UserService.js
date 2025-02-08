@@ -194,3 +194,11 @@ exports.registerUser = async (data) => {
         return { success: false, message: error.message || "Error creating user" };
     }
 };
+
+exports.deleteAccount = async (userId) => {
+    try {
+        return await UserDao.deleteUserById(userId);
+    } catch (error) {
+        throw new Error(`Service error: ${error.message}`);
+    }
+};

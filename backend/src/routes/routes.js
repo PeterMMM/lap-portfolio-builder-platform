@@ -14,6 +14,7 @@ router.post('/validateOtp', userController.validateOtpCodeController)
 router.post('/resetPassword', userController.resetPassword)
 router.post('/login', userController.login);
 router.post('/register', userController.registerUser);
+router.delete('/users/:userId', userController.deleteAccount);
 
 // Project Routes
 router.post('/projects', projectController.createProject);

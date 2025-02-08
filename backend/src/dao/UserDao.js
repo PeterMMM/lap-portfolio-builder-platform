@@ -123,3 +123,11 @@ exports.login = async (email, password) => {
         return { success: false, message: error.message };
     }
 };
+
+exports.deleteUserById = async (userId) => {
+    try {
+        return await User.findByIdAndDelete(userId);
+    } catch (error) {
+        throw new Error(`DAO error: ${error.message}`);
+    }
+};

@@ -17,7 +17,6 @@ const UserRoleSchema = new mongoose.Schema({
     description: { type: String, default: '' }
 });
 
-
 // Models
 const User = mongoose.model('User', UserSchema);
 const UserRole = mongoose.model('UserRole', UserRoleSchema);
