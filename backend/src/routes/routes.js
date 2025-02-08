@@ -16,7 +16,6 @@ router.post('/login', userController.login);
 router.post('/register', userController.registerUser);
 
 //Project
-// Define project routes
 router.post('/projects', projectController.createProject);
 router.delete('/projects/:id', projectController.deleteProject);
 
