@@ -16,7 +16,7 @@ export default function Page() {
       <Navbar />
       <div
         style={{
-          backgroundImage: "url('https://64.media.tumblr.com/ff730b42ff21de76d498eab475818df2/86305901a05ad4f9-c2/s1308x736/60ac25f2d66c468c91157e73a01cfd33f75e8b49.png')",
+          backgroundImage: "url('./images/gradient.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '70vh',
@@ -27,7 +27,7 @@ export default function Page() {
         <Search />
         <br></br>
        
-        <h1 className="text-8xl font-extrabold text-white text-left ml-96">
+        <h1 className="text-8xl font-extrabold text-greenone text-left ml-96">
   Find Your <br />
   Creator
 </h1>
