@@ -22,9 +22,9 @@ const Search = () => {
         placeholder="What are you looking for?"
         className="bg-transparent outline-none placeholder-gray-500 text-lg w-full py-2 px-4"  // Full width input
       />
-      
-      <div className="flex items-center justify-center bg-green-600 rounded-full p-3 mr-4 cursor-pointer" onClick={handleSearch}>
-        <FaSearch size={20} className="text-white" />
+
+      <div className="flex items-center justify-center bg-[#E4F5DE] rounded-full p-3 mr-4 cursor-pointer" onClick={handleSearch}>
+        <FaSearch size={18} className="text-[#537156]" />
       </div>
     </div>
   );
