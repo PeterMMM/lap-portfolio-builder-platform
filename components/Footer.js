@@ -12,22 +12,22 @@ export default function Footer() {
 
             {/* Column 1 */}
             <li className="flex">
-  <img
-    src="/images/green.png"
-    alt="Logo"
-    className="w-80 h-32 mt-[-50px] -ml-29" // Adjust the negative margin to move it up
-  />
-</li>
+              <img
+                src="/images/green.png"
+                alt="Logo"
+                className="w-80 h-32 mt-[-50px] -ml-29" // Adjust the negative margin to move it up
+              />
+            </li>
 
 
             {/* Column 2 */}
             <li>
               <h3 className="font-bold text-lg mb-4">Social</h3>
               <ul className="space-y-2">
-                <li><a href="/about" className="flex items-center hover:underline"> <FaLinkedin className='mr-1'/> Linked In</a></li>
-                <li><a href="/cookies" className="flex items-center hover:underline"><FaInstagram className='mr-1'/>Instagram</a></li>
-                <li><a href="/team" className="flex items-center hover:underline"><FaTwitter className='mr-1'/>Twitter</a></li>
-                <li><a href="/careers" className="flex items-center hover:underline"><FaFacebook className='mr-1'/>Facebook</a></li>
+                <li><a href="/about" className="flex items-center hover:underline"> <FaLinkedin className='mr-1' /> Linked In</a></li>
+                <li><a href="/cookies" className="flex items-center hover:underline"><FaInstagram className='mr-1' />Instagram</a></li>
+                <li><a href="/team" className="flex items-center hover:underline"><FaTwitter className='mr-1' />Twitter</a></li>
+                <li><a href="/careers" className="flex items-center hover:underline"><FaFacebook className='mr-1' />Facebook</a></li>
               </ul>
             </li>
 
@@ -41,7 +41,7 @@ export default function Footer() {
                 <li><a href="/cookies" className="hover:underline">Photographers</a></li>
               </ul>
             </li>
-            
+
             {/* Column 4 */}
             <li>
               <h3 className="font-bold text-lg mb-4">About</h3>
@@ -54,7 +54,7 @@ export default function Footer() {
             </li>
           </ul>
         </nav>
-        
+
         <p>&copy; {new Date().getFullYear()} <span className="">Porvocad Inc. All rights reserved</span></p>
 
       </div>

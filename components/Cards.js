@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Cards() {
   return (
-    <div className="flex justify-center gap-6 p-6">
+    <div className="flex flex-wrap justify-center gap-12 p-6 ">
       {/* Card 1 */}
-      <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg">
+      <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg cursor-pointer">
         <img
           src="/images/one.jpg"
           alt="Website Designers"
@@ -19,7 +19,7 @@ export default function Cards() {
       </div>
 
       {/* Card 2 */}
-      <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg">
+      <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg cursor-pointer">
         <img
           src="/images/Two.jpg"
           alt="Freelance Developers"
@@ -34,7 +34,7 @@ export default function Cards() {
       </div>
 
       {/* Card 3 */}
-      <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg">
+      <div className="relative w-80 h-60 overflow-hidden rounded-xl shadow-lg cursor-pointer">
         <img
           src="/images/Three.jpg"
           alt="Photography"
