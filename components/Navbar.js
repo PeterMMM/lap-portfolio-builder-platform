@@ -9,7 +9,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full bg-[#364C39] text-white">
+    <nav className="w-full bg-[#364C39] text-white shadow-md">
       <div className="w-full mx-auto flex justify-between items-center pl-0 pr-4">
         {/* Logo */}
         <div className="flex items-center bg-white px-2">

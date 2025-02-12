@@ -9,9 +9,9 @@ export default function IllustrationCard() {
         <img
           src="/images/study.png"
           alt="Illustration"
-          className="w-[200px] h-[150px]" // Custom width and height
+          className="w-[320px] h-[200px]" // Custom width and height
         />
       </div>
     </div>
   );
-}
+} 
