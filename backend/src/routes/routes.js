@@ -15,6 +15,10 @@ router.post('/resetPassword', userController.resetPassword)
 router.post('/login', userController.login);
 router.post('/register', userController.registerUser);
 
+router.put('/updateUser/:id', userController.updateUserProfile);
+router.delete('/users/:userId', userController.deleteAccount);
+
+
 // Project Routes
 router.post('/projects', projectController.createProject);
 router.get('/projects/:id', projectController.getProjectById);
