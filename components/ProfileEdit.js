@@ -57,7 +57,7 @@ export default function ProfileEdit() {
                             <p className="mb-2">Select your profession tag</p>
                             <div className="flex flex-wrap gap-2">
                                 {['Freelancer', 'Illustrator', 'Programmer', 'Photographer', 'Editor', 'Writer', 'Artist'].map(tag => (
-                                    <span key={tag} className="bg-green-200 px-2 py-1 rounded-md text-sm">#{tag}</span>
+                                    <span key={tag} className="px-2 py-2 bg-green-200 text-green-700 rounded-full text-sm">#{tag}</span>
                                 ))}
                             </div>
                         </div>
