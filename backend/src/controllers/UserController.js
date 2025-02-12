@@ -133,3 +133,16 @@ exports.updateUserProfile = async (req, res) => {
         return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };
+
+exports.deleteAccount = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const deletedUser = await UserService.deleteAccount(userId);
+        if (!deletedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        return res.status(200).json({ message: 'Account deleted successfully' });
+    } catch (error) {
+        return res.status(500).json({ message: `Error deleting account: ${error.message}` });
+    }
+};

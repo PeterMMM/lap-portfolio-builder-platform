@@ -170,3 +170,11 @@ exports.updateUser = async (userId, updateData) => {
         return { success: false, message: error.message || "Error updating user" };
     }
 };
+
+exports.deleteUserById = async (userId) => {
+    try {
+        return await User.findByIdAndDelete(userId);
+    } catch (error) {
+        throw new Error(`DAO error: ${error.message}`);
+    }
+};

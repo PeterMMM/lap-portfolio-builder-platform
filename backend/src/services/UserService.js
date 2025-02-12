@@ -209,3 +209,11 @@ exports.updateUserProfile = async (userId, updateData) => {
       return { success: false, message: error.message || "Error updating user profile" };
   }
 };
+
+exports.deleteAccount = async (userId) => {
+  try {
+      return await UserDao.deleteUserById(userId);
+  } catch (error) {
+      throw new Error(`Service error: ${error.message}`);
+  }
+};
