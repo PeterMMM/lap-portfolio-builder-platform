@@ -1,9 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
-.textGradient{
-  background: -webkit-linear-gradient(#b1b0b5,#8f8f90);
+
+.textGradient {
+  background: -webkit-linear-gradient(#b1b0b5, #8f8f90);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  /* Apply Roboto Thin */
+  font-weight: 100;
+  /* Ultra light weight */
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 128px;
+  letter-spacing: -0.8px;
 }
