@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  title: LAP Portfolio Builder
+  description: Backend API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/v1
+    description: Local development server
+
+paths:
+  /:
+    get:
+      summary: Greeting
+      description: Returns a greeting message.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Welcome to the API!"
+
+  /validateUser:
+    post:
+      summary: Validate User
+      description: Validates a user based on provided credentials.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: "password123"
+      responses:
+        '200':
+          description: User validation successful
+        '400':
+          description: Validation failed
+
+  /validateOtp:
+    post:
+      summary: Validate OTP Code
+      description: Validates the OTP sent to the user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                otp:
+                  type: string
+                  example: "123456"
+      responses:
+        '200':
+          description: OTP validation successful
+        '400':
+          description: Invalid OTP
+
+  /resetPassword:
+    post:
+      summary: Reset Password
+      description: Allows the user to reset their password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: "newPassword123"
+      responses:
+        '200':
+          description: Password reset successful
+        '400':
+          description: Password reset failed
+
+  /login:
+    post:
+      summary: Login User
+      description: Logs in a user and returns an authentication token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: "password123"
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR..."
+        '401':
+          description: Invalid credentials
+
+  /register:
+    post:
+      summary: Register User
+      description: Registers a new user to the system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "John Doe"
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: "password123"
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: Registration failed
